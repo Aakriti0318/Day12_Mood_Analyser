@@ -8,11 +8,12 @@ public class MoodAnalyser {
         this.mood = mood;
     }
 
-    // Step 2: Method to analyze mood with exception handling for NULL
+    // Step 2: Method to analyze mood with exception handling for EMPTY
     public String analyseMood() throws MoodAnalysisException {
-        if (mood == null) {
-            throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NULL_MOOD, "Mood is null.");
+        if (mood == null || mood.trim().isEmpty()) {
+            throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.EMPTY_MOOD, "Mood is empty.");
         }
         return mood.toLowerCase().contains("sad") ? "SAD" : "HAPPY";
     }
+
 }
